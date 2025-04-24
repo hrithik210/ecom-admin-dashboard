@@ -17,7 +17,7 @@ export default function Home() {
           description:
             "Our signature hoodie made from 100% organic cotton. Features a relaxed fit with a modern cut and premium details.",
           price: 89.99,
-          images: ["/placeholder.svg?height=600&width=800"],
+          images: ["/placeholder.png?height=600&width=800"],
           category: "Apparel",
           colors: ["Black", "Gray", "Navy"],
           sizes: ["S", "M", "L", "XL"],
