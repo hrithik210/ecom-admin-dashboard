@@ -1,5 +1,5 @@
 import Hero from "@/components/Hero";
-import { MainCard } from "@/components/mainCard";
+import MainCard from "@/components/MainCard";
 
 export default function Home() {
   return (
