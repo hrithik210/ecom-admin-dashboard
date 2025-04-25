@@ -1,5 +1,5 @@
 import Hero from "@/components/Hero";
-import MainCard from "@/components/mainCard";
+import { MainCard } from "@/components/mainCard";
 
 export default function Home() {
   return (
@@ -10,14 +10,14 @@ export default function Home() {
       />
 
       <div className="container mc-auto px-4 py-12">
-        <MainCard 
+        <MainCard
          product={{
           id: "1",
-          name: "Premium Cotton Hoodie",
+          name: "Gojo's Fit",
           description:
-            "Our signature hoodie made from 100% organic cotton. Features a relaxed fit with a modern cut and premium details.",
+            "Shining like a star in this stylish outfit inspired by Gojo Satoru from Jujutsu Kaisen. Perfect for casual outings or anime conventions.",
           price: 89.99,
-          images: ["/placeholder.png?height=600&width=800"],
+          images: ["/gojo.jpeg"],
           category: "Apparel",
           colors: ["Black", "Gray", "Navy"],
           sizes: ["S", "M", "L", "XL"],

@@ -9,12 +9,12 @@ interface HeroProps{
 
 export default function Hero({title , description}: HeroProps){
     return (
-    <div className="relative w-full bg-black px-4 py-16 md:py-26">
+    <div className="relative w-full bg-black px-4 py-16 md:py-24">
         <div className="container mx-auto text-center">
-            <h1 className="text-white text-4xl font-bold">
+            <h1 className="text-white text-3xl tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none font-bold">
                 {title}
             </h1>
-            <p className="text-gray-300 mt-4 max-w-[700px] mx-auto">
+            <p className="text-gray-300 md:text-xl mt-4 max-w-[700px] mx-auto">
                 {description}
             </p>
 
