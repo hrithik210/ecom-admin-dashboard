@@ -3,6 +3,8 @@ import { Card, CardContent } from "./ui/card";
 import Image from "next/image";
 import { Badge } from "./ui/badge";
 import { Star } from "lucide-react";
+import { Button } from "./ui/button";
+import Link from "next/link";
 
 interface MainCardProps{
     product : Product
@@ -44,10 +46,20 @@ export default function MainCard({product} : MainCardProps){
                 <div>
                     {product.colors?.map( (color) => (
                         <Badge key={color} variant="outline">
-                            
+                            {color}
                         </Badge>
                     ))}
                 </div>
+            </div>
+
+            <div>
+                <Button>
+                    Add to Cart
+                </Button>
+                <Button>
+                    <Link href={`/products/${product.id}`} className="w-full">
+                    </Link>
+                </Button>
             </div>
 
         </CardContent>
