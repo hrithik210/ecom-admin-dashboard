@@ -1,6 +1,8 @@
 import Hero from "@/components/Hero";
 import MainCard from "@/components/MainCard";
 import ProductGrid from "@/components/ProductGrid";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -28,7 +30,17 @@ export default function Home() {
         }}
         />
 
-        <h2 className="text-3xl font-bold mt-16 mb-8">Our Collection</h2>
+        <div className="flex items-center justify-between mt-16 mb-8">
+          <h2 className="text-3xl font-bold">
+            Our Collection
+          </h2>
+
+          <Button>
+            <Link href="/products">
+              View All Products
+            </Link>
+          </Button>
+        </div>
         <ProductGrid 
           products={[
             {
@@ -134,19 +146,6 @@ export default function Home() {
               isMainCard: false,
               reviews: [],
               rating: 4.7,
-            },
-            {
-              id: "9",
-              name: "Running Shoes",
-              description: "Lightweight and responsive for optimal performance.",
-              price: 119.99,
-              images: ["/wp13729171-gojo-2024-wallpapers.jpg"],
-              category: "Footwear",
-              colors: ["Black/White", "Blue/Gray", "Red/Black"],
-              sizes: ["7", "8", "9", "10", "11", "12"],
-              isMainCard: false,
-              reviews: [],
-              rating: 4.6,
             },
         
           ]}
