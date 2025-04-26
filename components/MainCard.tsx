@@ -52,12 +52,11 @@ export default function MainCard({product} : MainCardProps){
                 </div>
             </div>
 
-            <div>
-                <Button>
-                    Add to Cart
-                </Button>
-                <Button>
+            <div className="flex flex-col space-y-2 sm:flex-row sm:space-x-2 sm:space-y-0">
+                <Button className="flex-1"> Add to Cart </Button>
+                <Button className="flex-1" variant="outline">
                     <Link href={`/products/${product.id}`} className="w-full">
+                        View Details
                     </Link>
                 </Button>
             </div>
