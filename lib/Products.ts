@@ -20,7 +20,7 @@ const products: Product[] = [
     isMainCard: true,
     reviews: [
       {
-        id: "r1",
+        id: "1",
         userId: "u1",
         userName: "John Doe",
         rating: 5,

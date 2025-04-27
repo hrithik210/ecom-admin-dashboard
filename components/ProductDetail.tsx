@@ -1,3 +1,4 @@
+"use client"
 import { Product } from "@/lib/types"
 import { useState } from "react"
 
@@ -14,7 +15,7 @@ export default function ProductDetail({product} : ProductDetailProps){
       {/* left side */}
       <div className="relative">
         <div className="relative aspect-square overflow-hidden rounded-lg border"
-          {...swipeHandlers}
+          // {...swipeHandlers}
           aria-live="polite">
         </div>
       </div>
