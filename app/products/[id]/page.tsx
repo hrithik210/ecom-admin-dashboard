@@ -10,7 +10,7 @@ interface ProductPageProps{
 }
 
 export default function ProductPage({params} : ProductPageProps){
-  const product = getProductById(params.id)
+  const product =  getProductById(params.id)
 
   if(!product){
     notFound()
