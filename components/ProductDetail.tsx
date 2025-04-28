@@ -59,6 +59,20 @@ export default function ProductDetail({product} : ProductDetailProps){
               </>
             )}
         </div>
+        {/* dot indicator will come here */}
+
+        {product.images.length >1 && (
+          <div className="mt-4 flex space-x-2 overflow-auto pb-2">
+            {product.images.map((image,index) => (
+              <button 
+                key={index}
+                className={cn()}
+              >
+                
+              </button>
+            ))}
+          </div>  
+        )}
       </div>
 
       {/* right side */}
