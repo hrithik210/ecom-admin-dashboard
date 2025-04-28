@@ -15,7 +15,7 @@ export default function MainCard({product} : MainCardProps){
     return(
      <Card className="overflow-hidden border-0 shadow-lg">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="relative aspect-square overflow-hidden">
+        <Link className="relative aspect-square overflow-hidden" href={`/products/${product.id}`}>
             <Image 
                 src={product.images[0]}
                 alt={product.name}
@@ -23,7 +23,7 @@ export default function MainCard({product} : MainCardProps){
                 className="object-cover transition-transform hover:scale-105"
                 priority
             />
-        </div>
+        </Link>
         
         <CardContent className="flex flex-col justify-center p-6">
             <div className="mb-2 flex items-center ">
@@ -36,8 +36,9 @@ export default function MainCard({product} : MainCardProps){
                     <span className="ml-1 text-sm font-medium">{product.rating}</span>
                 </div>
             </div>
-
-            <h3 className="mb-2 text-3xl font-bold">{product.name}</h3>
+            <a href={`/products/${product.id}`}>
+                <h3 className="mb-2 text-3xl font-bold">{product.name}</h3>
+            </a>
             <p className="mb-4 text-2xl font-semibold">${product.price.toFixed(2)}</p>
             <p className="mb-6 text-muted-foreground">{product.description}</p>
 
