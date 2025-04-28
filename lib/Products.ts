@@ -8,7 +8,7 @@ const products: Product[] = [
     description:
       "Shining like a star in this stylish outfit inspired by Gojo Satoru from Jujutsu Kaisen. Perfect for casual outings or anime conventions.",
     price: 89.99,
-    images: ["/gojo.jpeg"],
+    images: ["/gojo.jpeg", "/makima.jpeg"],
     category: "Apparel",
     colors: ["Black", "Gray", "Navy"],
     sizes: ["S", "M", "L", "XL"],

@@ -3,6 +3,8 @@ import { Product } from "@/lib/types"
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useState } from "react"
+import { Button } from "./ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 
 interface ProductDetailProps{
@@ -35,6 +37,27 @@ export default function ProductDetail({product} : ProductDetailProps){
 
               </div>
             ))}
+            {product.images.length > 1 && (
+              <>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="absolute left-2 top-1/2 z-10 -translate-y-1/2 rounded-full bg-background/80 opacity-80 shadow-sm backdrop-blur-sm hover:opacity-100"
+            
+                >
+                  <ChevronLeft className="h-6 w-6" />
+                </Button>
+
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="absolute right-2 top-1/2 z-10 h-9 w-9 -translate-y-1/2 rounded-full bg-background/80 opacity-80 shadow-sm backdrop-blur-sm hover:opacity-100"
+            
+                >
+                  <ChevronRight className="h-6 w-6" />
+                </Button>
+              </>
+            )}
         </div>
       </div>
 
@@ -42,7 +65,7 @@ export default function ProductDetail({product} : ProductDetailProps){
 
       <div className="space y-4">
         <div className="">
-          <h1>Product Name</h1>
+          <h1>{product.name}</h1>
           <div>Product Ratings and reviews</div>
         </div>
 
