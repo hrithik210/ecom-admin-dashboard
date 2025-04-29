@@ -4,7 +4,8 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useState } from "react"
 import { Button } from "./ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Star } from "lucide-react";
+import { Separator } from "./ui/separator";
 
 
 interface ProductDetailProps{
@@ -66,9 +67,15 @@ export default function ProductDetail({product} : ProductDetailProps){
             {product.images.map((image,index) => (
               <button 
                 key={index}
-                className={cn()}
+                className={cn("relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-md border")}
               >
-                
+                <Image 
+                  src={image}
+                  alt={product.name}
+                  fill
+                  className="object-cover"
+                  sizes="64px"
+                />
               </button>
             ))}
           </div>  
@@ -79,8 +86,20 @@ export default function ProductDetail({product} : ProductDetailProps){
 
       <div className="space y-4">
         <div className="">
-          <h1>{product.name}</h1>
-          <div>Product Ratings and reviews</div>
+          <h1 className="text-3xl font-bold">{product.name}</h1>
+          <div className="mt-2 flex items-center gap-4">
+            <div className="flex items-center">
+              {[...Array(5)].map((_ , i) => (
+                <Star 
+                  key={i}
+                  className={`h-5 w-6 ${i < Math.floor(product.rating ?? 0)? "fill-primary" : "fill-muted stroke-muted-foreground"}`}
+                />
+              ))}
+              <span className="ml-2 text-sm text-muted-foreground">{product.rating}/5</span>
+            </div>
+            <Separator orientation='vertical'  className="h-5" />
+            <span>{product.reviews?.length} reviews</span>
+          </div>
         </div>
 
         <div>{product.price}</div>
