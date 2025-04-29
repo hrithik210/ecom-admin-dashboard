@@ -213,7 +213,7 @@ export function ProductDetail({ product, relatedProducts }: ProductDetailProps) 
                 <span className="ml-2 text-sm text-muted-foreground">{product.rating} out of 5</span>
               </div>
               <Separator orientation="vertical" className="h-5" />
-              <span className="text-sm text-muted-foreground">{product.reviews.length} reviews</span>
+              <span className="text-sm text-muted-foreground">{product.reviews?.length} reviews</span>
             </div>
           </div>
 

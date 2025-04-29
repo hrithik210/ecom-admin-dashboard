@@ -6,6 +6,9 @@ import { useState } from "react"
 import { Button } from "./ui/button";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { Separator } from "./ui/separator";
+import { Label } from "./ui/label";
+import { RadioGroup } from "./ui/radio-group";
+import { RadioGroupItem } from "@radix-ui/react-radio-group";
 
 
 interface ProductDetailProps{
@@ -14,6 +17,7 @@ interface ProductDetailProps{
 
 export default function ProductDetail({product} : ProductDetailProps){
   const [currentIndex , setCurrentIndex] = useState(0);
+  const [selectedColor , setSelectedColor] = useState(product.colors?.[0] || "")
   return (
     <div className="grid md:grid-cols-2 gap-8 lg:gap-16">
       
@@ -84,28 +88,54 @@ export default function ProductDetail({product} : ProductDetailProps){
 
       {/* right side */}
 
-      <div className="space y-4">
-        <div className="">
+      <div className="space-y-6">
+        <div>
           <h1 className="text-3xl font-bold">{product.name}</h1>
           <div className="mt-2 flex items-center gap-4">
             <div className="flex items-center">
               {[...Array(5)].map((_ , i) => (
                 <Star 
                   key={i}
-                  className={`h-5 w-6 ${i < Math.floor(product.rating ?? 0)? "fill-primary" : "fill-muted stroke-muted-foreground"}`}
+                  className={`h-5 w-5 ${i < Math.floor(product.rating ?? 0)? "fill-primary" : "fill-muted stroke-muted-foreground"}`}
                 />
               ))}
               <span className="ml-2 text-sm text-muted-foreground">{product.rating}/5</span>
             </div>
             <Separator orientation='vertical'  className="h-5" />
-            <span>{product.reviews?.length} reviews</span>
+            <span className="text-sm text-muted-foreground">{product.reviews?.length} reviews</span>
           </div>
         </div>
 
-        <div>{product.price}</div>
-        <p>{product.description}</p>
+        <div className="text-3xl font-bold">₹ {product.price}</div>
+        <p className="text-muted-foreground">{product.description}</p>
+
+        <div className="space-y-6">
+            <div className="space-y-2"> 
+              <Label htmlFor="color">Color</Label>  
+              <RadioGroup
+                id="color"
+                value={selectedColor}
+                onValueChange={setSelectedColor}
+                className="flex flex-wrap gap-2"
+              >
+                {product.colors?.map((color) => (
+                  <div key={color}>
+                    <RadioGroupItem value={color} id={`color-${color}`}  className="peer sr-only" />
+                    <Label
+                      htmlFor={`color-${color}`}
+                      className="flex cursor-pointer items-center justify-center rounded-full border"
+                    >
+                        {color}
+                    </Label>
+                  </div>
+                ))}
+              </RadioGroup>
+            </div>
+        </div>
 
       </div>
+
+  
 
     </div>
   )
