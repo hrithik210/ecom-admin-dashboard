@@ -123,7 +123,8 @@ export default function ProductDetail({product} : ProductDetailProps){
                     <RadioGroupItem value={color} id={`color-${color}`}  className="peer sr-only" />
                     <Label
                       htmlFor={`color-${color}`}
-                      className="flex cursor-pointer items-center justify-center rounded-full border"
+                      className="flex cursor-pointer items-center justify-center rounded-md border border-muted bg-background px-3 py-2 text-sm font-medium ring-offset-background 
+                      peer-data-[state=checked]:border-primary peer-data-[state=checked]:background-primary/10"
                     >
                         {color}
                     </Label>
