@@ -9,6 +9,7 @@ import { Separator } from "./ui/separator";
 import { Label } from "./ui/label";
 import { RadioGroup } from "./ui/radio-group";
 import { RadioGroupItem } from "@radix-ui/react-radio-group";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 
 interface ProductDetailProps {
   product: Product;
@@ -18,6 +19,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedColor, setSelectedColor] = useState(product.colors?.[0] || "");
   const [selectedSize , setSelectedSize] = useState(product.sizes?.[0] || "");
+  const [quantity , setQuantity] = useState("1");
   return (
     <div className="grid md:grid-cols-2 gap-8 lg:gap-16">
       {/* left side */}
@@ -174,6 +176,22 @@ export default function ProductDetail({ product }: ProductDetailProps) {
               ))}
             </RadioGroup>
           </div>
+
+          <div className="space-y-2">
+              <Label htmlFor="quantity">Quantity</Label>
+              <Select value={quantity} onValueChange={setQuantity}>
+                <SelectTrigger className="w-24">
+                  <SelectValue placeholder="Quantity" />
+                </SelectTrigger>
+                <SelectContent>
+                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
+                    <SelectItem key={num} value={num.toString()}>
+                      {num}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
         </div>
       </div>
     </div>
