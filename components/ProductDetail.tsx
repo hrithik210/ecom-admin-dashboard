@@ -191,7 +191,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                   ))}
                 </SelectContent>
               </Select>
-            </div>
+          </div>
         </div>
       </div>
     </div>
