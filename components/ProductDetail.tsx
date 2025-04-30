@@ -17,7 +17,7 @@ interface ProductDetailProps {
 export default function ProductDetail({ product }: ProductDetailProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedColor, setSelectedColor] = useState(product.colors?.[0] || "");
-  const [selectedSize , setSelectedSize] = useState("");
+  const [selectedSize , setSelectedSize] = useState(product.sizes?.[0] || "");
   return (
     <div className="grid md:grid-cols-2 gap-8 lg:gap-16">
       {/* left side */}
@@ -147,6 +147,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
               ))}
             </RadioGroup>
           </div>
+          
 
           <div className="space-y-2">
             <Label htmlFor="size">Size</Label>
@@ -158,11 +159,14 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             >
               {product.sizes?.map((size) => (
                 <div key={size}>
-                  <RadioGroupItem key={`size-${size}`} value={size} className="peer sr-only" />
+                  <RadioGroupItem 
+                    id={`size-${size}`} 
+                    value={size} 
+                    className="peer sr-only" />
                   <Label
                     htmlFor={`size-${size}`}
-                    className="flex cursor-pointer items-center justify-center rounded-md border border-muted bg-background px-3 py-2 text-sm font-medium ring-offset-background 
-                      peer-data-[state=checked]:border-primary peer-data-[state=checked]:background-primary/10"
+                    className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-md border border-muted
+                    bg-background text-sm font-medium ring-offset-background peer-data-[state=checked]:border-primary peer-data-[state=checked]:bg-primary/10"
                   >
                     {size}
                   </Label>
