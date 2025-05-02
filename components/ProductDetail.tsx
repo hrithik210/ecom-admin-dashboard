@@ -231,6 +231,19 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                 <h4 className="font-medium">Materials</h4>
                 <p className="text-sm text-muted-foreground">Premium quality, ethically sourced</p>
               </div>
+
+              <div>
+                <h4  className="font-medium">Category</h4>
+                <h4 className="text-sm text-muted-foreground">{product.category}</h4>
+              </div>
+              <div>
+                  <h4 className="font-medium">Care Instructions</h4>
+                  <p className="text-sm text-muted-foreground">Machine wash cold, tumble dry low</p>
+              </div>
+              <div>
+                <h4 className="font-medium">Shipping</h4>
+                <p className="text-sm text-muted-foreground">5-7 business days</p>
+              </div>
             </div>
           </TabsContent>
         </Tabs>
