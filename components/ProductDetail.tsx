@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useState } from "react";
 import { Button } from "./ui/button";
-import { ChevronLeft, ChevronRight, Heart, Star } from "lucide-react";
+import { ChevronLeft, ChevronRight, Heart, Star, Truck } from "lucide-react";
 import { Separator } from "./ui/separator";
 import { Label } from "./ui/label";
 import { RadioGroup } from "./ui/radio-group";
@@ -203,6 +203,12 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             </Button>
           </div>
         </div>
+
+        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+          <Truck />
+          <span>Free shipping on orders above 399</span>
+        </div>
+
       </div>
     </div>
   );
