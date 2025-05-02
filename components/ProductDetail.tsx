@@ -209,6 +209,8 @@ export default function ProductDetail({ product }: ProductDetailProps) {
           <span>Free shipping on orders above 399</span>
         </div>
 
+        <Separator />
+
       </div>
     </div>
   );
