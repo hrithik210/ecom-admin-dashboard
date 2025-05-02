@@ -10,6 +10,7 @@ import { Label } from "./ui/label";
 import { RadioGroup } from "./ui/radio-group";
 import { RadioGroupItem } from "@radix-ui/react-radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
+import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
 
 interface ProductDetailProps {
   product: Product;
@@ -210,6 +211,14 @@ export default function ProductDetail({ product }: ProductDetailProps) {
         </div>
 
         <Separator />
+        
+        <Tabs defaultValue="description" >
+          <TabsList className="grid w-full grid-cols-3">
+            <TabsTrigger value="description">Description</TabsTrigger>
+            <TabsTrigger value="details">Details</TabsTrigger>
+            <TabsTrigger value="description">Reviews</TabsTrigger>
+          </TabsList>
+        </Tabs>
 
       </div>
     </div>
