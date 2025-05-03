@@ -28,6 +28,9 @@ export default function ProductDetail({ product }: ProductDetailProps) {
     alert(`Added ${quantity} of ${product.name} to cart`);
   }
   
+  const handleAddToWishlist = () => {
+    alert(`Added ${product.name} to wishlist`);
+  }
 
   return (
     <div className="grid md:grid-cols-2 gap-8 lg:gap-16">
@@ -206,7 +209,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             <Button className="flex-1" size="lg" onClick={handleAddToCart}>
               Add to cart
             </Button>
-            <Button className="flex-1" size="lg" variant="outline">
+            <Button className="flex-1" size="lg" variant="outline" onClick={handleAddToWishlist}>
               <Heart className="mr-2 h-4 w-4" />
               Add to Wishlist
             </Button>
