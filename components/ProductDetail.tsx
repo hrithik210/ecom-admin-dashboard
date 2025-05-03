@@ -4,13 +4,14 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useState } from "react";
 import { Button } from "./ui/button";
-import { ChevronLeft, ChevronRight, Heart, Star, Truck } from "lucide-react";
+import { ChevronLeft, ChevronRight, Heart, Share2, Star, Truck } from "lucide-react";
 import { Separator } from "./ui/separator";
 import { Label } from "./ui/label";
 import { RadioGroup } from "./ui/radio-group";
 import { RadioGroupItem } from "@radix-ui/react-radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
+import { Badge } from "./ui/badge";
 
 interface ProductDetailProps {
   product: Product;
@@ -249,8 +250,12 @@ export default function ProductDetail({ product }: ProductDetailProps) {
 
           <TabsContent value="reviews" className="pt-4">
             { (product.reviews && product.reviews.length > 0) ? (
-              <div>
-                {product.reviews}
+              <div className="space-y-4">
+                {product.reviews.map((review) => (
+                  <div key={review.id}>
+                      <p>{review}</p>
+                  </div>
+                ))}
               </div>
             ) : (
               <div>
@@ -259,6 +264,18 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             )}
           </TabsContent>
         </Tabs>
+
+        <div className="flex items-center justify-around">
+          <div className="flex items-center gap-4">
+            <Badge variant="outline">New Arrival</Badge>
+            <Badge variant="outline">{product.category}</Badge>
+          </div>
+
+          <Button variant="ghost" size="icon">
+            <Share2 className="h-4 w-4" />
+            <span className="sr-only">Share</span>
+          </Button>
+        </div>
 
       </div>
     </div>
