@@ -22,6 +22,13 @@ export default function ProductDetail({ product }: ProductDetailProps) {
   const [selectedColor, setSelectedColor] = useState(product.colors?.[0] || "");
   const [selectedSize , setSelectedSize] = useState(product.sizes?.[0] || "");
   const [quantity , setQuantity] = useState("1");
+
+
+  const handleAddToCart = () => {
+    alert(`Added ${quantity} of ${product.name} to cart`);
+  }
+  
+
   return (
     <div className="grid md:grid-cols-2 gap-8 lg:gap-16">
       {/* left side */}
@@ -196,7 +203,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
           </div>
 
           <div className="flex flex-col gap-2 sm:flex-row">
-            <Button className="flex-1" size="lg">
+            <Button className="flex-1" size="lg" onClick={handleAddToCart}>
               Add to cart
             </Button>
             <Button className="flex-1" size="lg" variant="outline">
