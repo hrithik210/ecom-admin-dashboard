@@ -377,33 +377,6 @@ export function ProductDetail({ product, relatedProducts }: ProductDetailProps) 
         </div>
       </div>
 
-      {/* Related Products */}
-      <div className="mt-16">
-        <h2 className="text-2xl font-bold mb-6">You might also like</h2>
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-          {relatedProducts.map((relatedProduct) => (
-            <Link key={relatedProduct.id} href={`/products/${relatedProduct.id}`} className="group">
-              <Card className="overflow-hidden transition-all hover:shadow-md">
-                <div className="relative aspect-square overflow-hidden">
-                  <Image
-                    src={relatedProduct.images[0] || "/api/placeholder?width=300&height=300"}
-                    alt={relatedProduct.name}
-                    fill
-                    className="object-cover transition-transform group-hover:scale-105"
-                  />
-                </div>
-                <CardContent className="p-4">
-                  <h3 className="font-medium line-clamp-1">{relatedProduct.name}</h3>
-                  <p className="text-sm text-muted-foreground line-clamp-1">{relatedProduct.description}</p>
-                </CardContent>
-                <CardFooter className="p-4 pt-0">
-                  <p className="font-semibold">${relatedProduct.price.toFixed(2)}</p>
-                </CardFooter>
-              </Card>
-            </Link>
-          ))}
-        </div>
-      </div>
     </>
   )
 }

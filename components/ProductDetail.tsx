@@ -216,7 +216,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="description">Description</TabsTrigger>
             <TabsTrigger value="details">Details</TabsTrigger>
-            <TabsTrigger value="description">Reviews</TabsTrigger>
+            <TabsTrigger value="reviews">Reviews</TabsTrigger>
           </TabsList>
           
           <TabsContent value="description" className="pt-4">  
@@ -245,6 +245,18 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                 <p className="text-sm text-muted-foreground">5-7 business days</p>
               </div>
             </div>
+          </TabsContent>
+
+          <TabsContent value="reviews" className="pt-4">
+            { (product.reviews && product.reviews.length > 0) ? (
+              <div>
+                {product.reviews}
+              </div>
+            ) : (
+              <div>
+                <p>no reviews yet</p>
+              </div>
+            )}
           </TabsContent>
         </Tabs>
 
