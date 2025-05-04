@@ -35,6 +35,16 @@ export default function ProductDetail({ product }: ProductDetailProps) {
     }
   }, [isAnimating , product.images.length]);
 
+  const goToPrevious = useCallback(()=> {
+    if(! isAnimating && product.images.length > 1){
+      setIsAnimating(true);
+      setCurrentIndex((previousIndex) => (previousIndex - 1 + product.images.length) % product.images.length);
+      setTimeout(() => {
+        setIsAnimating(false);
+      }, 300);
+    }
+  }, [isAnimating , product.images.length]);
+
   const handleAddToCart = () => {
     alert(`Added ${quantity} of ${product.name} to cart`);
   }
@@ -76,6 +86,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                 variant="ghost"
                 size="icon"
                 className="absolute left-2 top-1/2 z-10 -translate-y-1/2 rounded-full bg-background/80 opacity-80 shadow-sm backdrop-blur-sm hover:opacity-100"
+                onClick={goToPrevious}
               >
                 <ChevronLeft className="h-6 w-6" />
               </Button>
