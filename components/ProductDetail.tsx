@@ -2,7 +2,7 @@
 import { Product } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Button } from "./ui/button";
 import { ChevronLeft, ChevronRight, Heart, Share2, Star, Truck } from "lucide-react";
 import { Separator } from "./ui/separator";
@@ -19,10 +19,21 @@ interface ProductDetailProps {
 
 export default function ProductDetail({ product }: ProductDetailProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
   const [selectedColor, setSelectedColor] = useState(product.colors?.[0] || "");
   const [selectedSize , setSelectedSize] = useState(product.sizes?.[0] || "");
   const [quantity , setQuantity] = useState("1");
 
+
+  const goToNext = useCallback(() => {
+    if (! isAnimating && product.images.length >1){
+      setIsAnimating(true);
+      setCurrentIndex((previousIndex) => (previousIndex + 1) % product.images.length); 
+      setTimeout(() => {
+        setIsAnimating(false);
+      }, 300);
+    }
+  }, [isAnimating , product.images.length]);
 
   const handleAddToCart = () => {
     alert(`Added ${quantity} of ${product.name} to cart`);
@@ -73,6 +84,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                 variant="ghost"
                 size="icon"
                 className="absolute right-2 top-1/2 z-10 h-9 w-9 -translate-y-1/2 rounded-full bg-background/80 opacity-80 shadow-sm backdrop-blur-sm hover:opacity-100"
+                onClick={goToNext}
               >
                 <ChevronRight className="h-6 w-6" />
               </Button>
