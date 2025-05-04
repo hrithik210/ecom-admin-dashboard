@@ -87,6 +87,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                 size="icon"
                 className="absolute left-2 top-1/2 z-10 -translate-y-1/2 rounded-full bg-background/80 opacity-80 shadow-sm backdrop-blur-sm hover:opacity-100"
                 onClick={goToPrevious}
+                aria-label="Previous image"
               >
                 <ChevronLeft className="h-6 w-6" />
               </Button>
@@ -96,6 +97,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
                 size="icon"
                 className="absolute right-2 top-1/2 z-10 h-9 w-9 -translate-y-1/2 rounded-full bg-background/80 opacity-80 shadow-sm backdrop-blur-sm hover:opacity-100"
                 onClick={goToNext}
+                aria-label="Next image"
               >
                 <ChevronRight className="h-6 w-6" />
               </Button>
