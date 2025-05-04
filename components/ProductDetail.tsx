@@ -45,6 +45,16 @@ export default function ProductDetail({ product }: ProductDetailProps) {
     }
   }, [isAnimating , product.images.length]);
 
+  const goToSlide = (index) => {
+    if (! isAnimating && currentIndex != index){
+      setIsAnimating(true);
+      setCurrentIndex(index);
+      setTimeout(() => {
+        setIsAnimating(false);
+      }, 300);
+    }
+  }
+
   const handleAddToCart = () => {
     alert(`Added ${quantity} of ${product.name} to cart`);
   }
@@ -112,8 +122,10 @@ export default function ProductDetail({ product }: ProductDetailProps) {
               <button
                 key={index}
                 className={cn(
-                  "relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-md border"
+                  "relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-md border",
+                  index == currentIndex ? "ring-2 ring-primary" : ""
                 )}
+                onClick={() => goToSlide(index)}
               >
                 <Image
                   src={image}
