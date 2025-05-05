@@ -5,8 +5,8 @@ import Link from "next/link";
 
 export default function AdminDashboard(){
   return (
-    <div>
-      <div>
+    <div className="container mx-auto p-4">
+      <div className="flex items-center justify-between mb-8">
         <h1>Product Management</h1>
         <Button>
           <Link href="/admin/products/add">
