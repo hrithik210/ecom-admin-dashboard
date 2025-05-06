@@ -1,3 +1,4 @@
+import AdminSidebar from '@/components/admin/AdminSidebar'
 import React from 'react'
 
 const Adminlayout = ({children} : {children : React.ReactNode}) => {
