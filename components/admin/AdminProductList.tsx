@@ -25,11 +25,10 @@ const AdminProductList = ({products} : AdminProductListProps) => {
 
           <CardHeader className='p-4'>
             <CardTitle className='line-clamp-1'>{product.name}</CardTitle>
-            <CardDescription className='line-clamp-2'>{product.description}</CardDescription>
+           \
           </CardHeader>
           <CardContent className="p-4 pt-0">
             <p className="font-semibold">${product.price.toFixed(2)}</p>
-            <p className="text-sm text-muted-foreground">Category: {product.category}</p>
           </CardContent>
         </Card>
       ))}
