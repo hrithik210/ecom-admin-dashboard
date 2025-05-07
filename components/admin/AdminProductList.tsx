@@ -2,7 +2,7 @@
 
 import { Product } from '@/lib/types'
 import React, { useState } from 'react'
-import { Card } from '../ui/card'
+import { Card, CardDescription, CardHeader, CardTitle } from '../ui/card'
 import Image from 'next/image'
 
 interface AdminProductListProps {
@@ -17,8 +17,16 @@ const AdminProductList = ({products} : AdminProductListProps) => {
         <Card key={product.id} className='overflow-hidden'>
           <div className='relative aspect-video overflow-hidden'>
             <Image src={product.images[0]} alt={product.name} className='object-cover' fill/>
+            <div className="absolute top-2 right-2 bg-primary text-primary-foreground text-xs px-2 py-1 rounded-md">
+                Featured
+            </div>
 
           </div>
+
+          <CardHeader className='p-4'>
+            <CardTitle className='line-clamp-1'>{product.name}</CardTitle>
+            <CardDescription className='line-clamp-2'>{product.description}</CardDescription>
+          </CardHeader>
         </Card>
       ))}
     </div>
