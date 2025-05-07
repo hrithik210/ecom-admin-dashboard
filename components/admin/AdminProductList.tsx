@@ -2,7 +2,7 @@
 
 import { Product } from '@/lib/types'
 import React, { useState } from 'react'
-import { Card, CardDescription, CardHeader, CardTitle } from '../ui/card'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card'
 import Image from 'next/image'
 
 interface AdminProductListProps {
@@ -27,6 +27,10 @@ const AdminProductList = ({products} : AdminProductListProps) => {
             <CardTitle className='line-clamp-1'>{product.name}</CardTitle>
             <CardDescription className='line-clamp-2'>{product.description}</CardDescription>
           </CardHeader>
+          <CardContent className="p-4 pt-0">
+            <p className="font-semibold">${product.price.toFixed(2)}</p>
+            <p className="text-sm text-muted-foreground">Category: {product.category}</p>
+          </CardContent>
         </Card>
       ))}
     </div>
