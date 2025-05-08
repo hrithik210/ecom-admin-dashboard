@@ -2,8 +2,11 @@
 
 import { Product } from '@/lib/types'
 import React, { useState } from 'react'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card'
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../ui/card'
 import Image from 'next/image'
+import { Button } from '../ui/button'
+import Link from 'next/link'
+import { Edit } from 'lucide-react'
 
 interface AdminProductListProps {
   products : Product[]
@@ -25,11 +28,18 @@ const AdminProductList = ({products} : AdminProductListProps) => {
 
           <CardHeader className='p-4'>
             <CardTitle className='line-clamp-1'>{product.name}</CardTitle>
-           \
           </CardHeader>
           <CardContent className="p-4 pt-0">
             <p className="font-semibold">${product.price.toFixed(2)}</p>
           </CardContent>
+
+          <CardFooter className='p-4 flex justify-between'>
+            <Button asChild variant="outline" size="sm">
+              <Link href={`/admin/products/edit/${product.id}`}>
+                <Edit className="mr-2 h-4 w-4" /> Customize
+              </Link>
+            </Button>
+          </CardFooter>
         </Card>
       ))}
     </div>
