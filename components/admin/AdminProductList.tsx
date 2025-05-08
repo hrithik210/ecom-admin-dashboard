@@ -7,6 +7,7 @@ import Image from 'next/image'
 import { Button } from '../ui/button'
 import Link from 'next/link'
 import { Edit } from 'lucide-react'
+import { AlertDialog, AlertDialogTrigger } from '../ui/alert-dialog'
 
 interface AdminProductListProps {
   products : Product[]
@@ -39,6 +40,13 @@ const AdminProductList = ({products} : AdminProductListProps) => {
                 <Edit className="mr-2 h-4 w-4" /> Customize
               </Link>
             </Button>
+
+            <AlertDialog>
+              <AlertDialogTrigger>
+                
+              </AlertDialogTrigger>
+
+            </AlertDialog>
           </CardFooter>
         </Card>
       ))}
