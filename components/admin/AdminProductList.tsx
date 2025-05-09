@@ -7,7 +7,7 @@ import Image from 'next/image'
 import { Button } from '../ui/button'
 import Link from 'next/link'
 import { Edit, Trash } from 'lucide-react'
-import { AlertDialog, AlertDialogDescription, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '../ui/alert-dialog'
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from '../ui/alert-dialog'
 import { AlertDialogContent } from '@radix-ui/react-alert-dialog'
 
 interface AdminProductListProps {
@@ -52,11 +52,17 @@ const AdminProductList = ({products} : AdminProductListProps) => {
               <AlertDialogContent>
                 <AlertDialogHeader>
                   <AlertDialogTitle>U sure?</AlertDialogTitle> 
+                  
+                  <AlertDialogDescription>
+                      This will permanently delete the product "{product.name}". This action cannot be undone.
+                  </AlertDialogDescription>
                 </AlertDialogHeader>
+
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogAction onClick={() => handleDelete(product.id)}>Delete</AlertDialogAction>
+                </AlertDialogFooter>
                 
-                <AlertDialogDescription>
-                    This will permanently delete the product "{product.name}". This action cannot be undone.
-                </AlertDialogDescription>
               </AlertDialogContent>
 
             </AlertDialog>
