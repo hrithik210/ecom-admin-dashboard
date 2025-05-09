@@ -6,7 +6,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import Image from 'next/image'
 import { Button } from '../ui/button'
 import Link from 'next/link'
-import { Edit } from 'lucide-react'
+import { Edit, Trash } from 'lucide-react'
 import { AlertDialog, AlertDialogTrigger } from '../ui/alert-dialog'
 
 interface AdminProductListProps {
@@ -42,8 +42,10 @@ const AdminProductList = ({products} : AdminProductListProps) => {
             </Button>
 
             <AlertDialog>
-              <AlertDialogTrigger>
-                
+              <AlertDialogTrigger asChild>
+                <Button variant='destructive' size='sm'>
+                  <Trash className='h-4 w-4' /> Delete
+                </Button>
               </AlertDialogTrigger>
 
             </AlertDialog>
