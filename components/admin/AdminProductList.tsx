@@ -16,6 +16,11 @@ interface AdminProductListProps {
 
 const AdminProductList = ({products} : AdminProductListProps) => {
   const [productList , setProductList] = useState<Product[]>(products)
+
+  const handleDelete = (id : string) => {
+    alert(`Deleting product with id: ${id}`)
+  }
+
   return (
     <div className='grid gap-6 md:grid-cols-2 lg:grid-cols-3'>
       {productList.map((product) => (
