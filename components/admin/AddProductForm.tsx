@@ -1,6 +1,6 @@
 import { Product } from '@/lib/types'
 import React, { useState } from 'react'
-import { Card } from '../ui/card'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card'
 
 const AddProductForm = () => {
   const [formData, setFormData] = useState<Partial<Product>>({
@@ -19,7 +19,13 @@ const AddProductForm = () => {
     <form>
       <div className='grid gap-6 mb-6'>
         <Card>
-          
+          <CardHeader>
+            <CardTitle>Basic Information</CardTitle>
+            <CardDescription>Enter the basic details of your product.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            
+          </CardContent>
         </Card>
       </div>
     </form>
