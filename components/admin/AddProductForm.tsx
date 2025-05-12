@@ -7,6 +7,8 @@ import { Input } from '../ui/input'
 import { Textarea } from '../ui/textarea'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select'
 import { Switch } from '../ui/switch'
+import { Separator } from '@radix-ui/react-select'
+import { Checkbox } from '@radix-ui/react-checkbox'
 
 const AddProductForm = () => {
   const categories = ["Apparel", "Accessories", "Footwear", "Electronics", "Home", "Beauty"]
