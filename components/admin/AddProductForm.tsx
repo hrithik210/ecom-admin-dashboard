@@ -9,8 +9,12 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '.
 import { Switch } from '../ui/switch'
 import { Separator } from '@radix-ui/react-select'
 import { Checkbox } from '@radix-ui/react-checkbox'
+import { Button } from '../ui/button'
+import { useRouter } from 'next/navigation'
 
 const AddProductForm = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const router = useRouter()
   const categories = ["Apparel", "Accessories", "Footwear", "Electronics", "Home", "Beauty"]
   const availableSizes = ["XS", "S", "M", "L", "XL", "XXL", "One Size", "5", "6", "7", "8", "9", "10", "11", "12"]
   const availableColors = [
@@ -197,6 +201,15 @@ const AddProductForm = () => {
             </div>
           </CardContent>
         </Card>
+      </div>
+
+      <div className="flex justify-end gap-4">
+        <Button type="button" variant="outline" onClick={() => router.push("/admin")}>
+          Cancel
+        </Button>
+        <Button type="submit" disabled={isSubmitting}>
+          {isSubmitting ? "Saving..." : "Save Product"}
+        </Button>
       </div>
     </form>
   )
