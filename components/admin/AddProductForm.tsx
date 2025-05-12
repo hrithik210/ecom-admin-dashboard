@@ -42,6 +42,25 @@ const AddProductForm = () => {
     reviews: [],
     rating: 0,
   })
+  const handleColorToggle = (color: string) => {
+    setFormData((prev) => {
+      const currentColors = prev.colors || []
+      return {
+        ...prev,
+        colors: currentColors.includes(color) ? currentColors.filter((c) => c !== color) : [...currentColors, color],
+      }
+    })
+  }
+
+  const handleSizeToggle = (size: string) => {
+    setFormData((prev) => {
+      const currentSizes = prev.sizes || []
+      return {
+        ...prev,
+        sizes: currentSizes.includes(size) ? currentSizes.filter((s) => s !== size) : [...currentSizes, size],
+      }
+    })
+  }
 
   const handleChange = () => {
     console.log("Form data changed", formData)
