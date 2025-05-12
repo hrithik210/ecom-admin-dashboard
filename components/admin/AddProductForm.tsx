@@ -46,6 +46,55 @@ const AddProductForm = () => {
     reviews: [],
     rating: 0,
   })
+  
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    try {
+      console.log("Submitting product:", formData)
+
+
+      await new Promise((resolve) => setTimeout(resolve, 1000))
+
+
+      router.push("/admin")
+    } catch (error) {
+      console.error("Error adding product:", error)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setFormData((prev) => ({ ...prev, [name]: value }))
+  }
+
+  const handleNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target
+    setFormData((prev) => ({ ...prev, [name]: Number.parseFloat(value) }))
+  }
+
+  const handleImageChange = (index: number, value: string) => {
+    const newImages = [...(formData.images || [])]
+    newImages[index] = value
+    setFormData((prev) => ({ ...prev, images: newImages }))
+  }
+
+  const addImageField = () => {
+    setFormData((prev) => ({
+      ...prev,
+      images: [...(prev.images || []), ""],
+    }))
+  }
+
+  const removeImageField = (index: number) => {
+    const newImages = [...(formData.images || [])]
+    newImages.splice(index, 1)
+    setFormData((prev) => ({ ...prev, images: newImages }))
+  }
+
   const handleColorToggle = (color: string) => {
     setFormData((prev) => {
       const currentColors = prev.colors || []
@@ -64,13 +113,6 @@ const AddProductForm = () => {
         sizes: currentSizes.includes(size) ? currentSizes.filter((s) => s !== size) : [...currentSizes, size],
       }
     })
-  }
-
-  const handleChange = () => {
-    console.log("Form data changed", formData)
-  }
-  const handleNumberChange = () =>{
-    console.log("Number input changed", formData)
   }
 
   return (
