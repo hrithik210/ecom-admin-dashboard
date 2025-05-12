@@ -1,22 +1,26 @@
 "use client"
-import { Product } from '@/lib/types'
-import React, { useState } from 'react'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card'
-import { Label } from '../ui/label'
-import { Input } from '../ui/input'
-import { Textarea } from '../ui/textarea'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select'
-import { Switch } from '../ui/switch'
-import { Separator } from '@radix-ui/react-select'
-import { Checkbox } from '@radix-ui/react-checkbox'
-import { Button } from '../ui/button'
-import { useRouter } from 'next/navigation'
 
-const AddProductForm = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false)
+import type React from "react"
+
+import { useState } from "react"
+import { useRouter } from "next/navigation"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { Label } from "@/components/ui/label"
+import { Switch } from "@/components/ui/switch"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Separator } from "@/components/ui/separator"
+import type { Product } from "@/lib/types"
+
+export default function AddProductForm() {
   const router = useRouter()
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  // Available options
   const categories = ["Apparel", "Accessories", "Footwear", "Electronics", "Home", "Beauty"]
-  const availableSizes = ["XS", "S", "M", "L", "XL", "XXL", "One Size", "5", "6", "7", "8", "9", "10", "11", "12"]
   const availableColors = [
     "Black",
     "White",
@@ -34,6 +38,9 @@ const AddProductForm = () => {
     "Gold",
     "Silver",
   ]
+  const availableSizes = ["XS", "S", "M", "L", "XL", "XXL", "One Size", "5", "6", "7", "8", "9", "10", "11", "12"]
+
+  // Form state
   const [formData, setFormData] = useState<Partial<Product>>({
     name: "",
     description: "",
@@ -46,18 +53,19 @@ const AddProductForm = () => {
     reviews: [],
     rating: 0,
   })
-  
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
 
     try {
+      // Here you would normally send the data to your API
       console.log("Submitting product:", formData)
 
-
+      // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1000))
 
-
+      // Redirect to admin products page
       router.push("/admin")
     } catch (error) {
       console.error("Error adding product:", error)
@@ -116,14 +124,13 @@ const AddProductForm = () => {
   }
 
   return (
-    <form>
-      <div className='grid gap-6 mb-6'>
+    <form onSubmit={handleSubmit}>
+      <div className="grid gap-6 mb-6">
         <Card>
           <CardHeader>
             <CardTitle>Basic Information</CardTitle>
             <CardDescription>Enter the basic details of your product.</CardDescription>
           </CardHeader>
-        
           <CardContent className="space-y-4">
             <div className="grid gap-2">
               <Label htmlFor="name">Product Name</Label>
@@ -198,8 +205,37 @@ const AddProductForm = () => {
               <Label htmlFor="isMainCard">Feature as Main Card</Label>
             </div>
           </CardContent>
-         
         </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle>Product Images</CardTitle>
+            <CardDescription>
+              Add image URLs for your product. The first image will be used as the main image.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {formData.images?.map((image, index) => (
+              <div key={index} className="flex gap-2">
+                <Input
+                  placeholder={`Image URL ${index + 1}`}
+                  value={image}
+                  onChange={(e) => handleImageChange(index, e.target.value)}
+                  required={index === 0}
+                />
+                {index > 0 && (
+                  <Button type="button" variant="destructive" size="icon" onClick={() => removeImageField(index)}>
+                    &times;
+                  </Button>
+                )}
+              </div>
+            ))}
+            <Button type="button" variant="outline" onClick={addImageField}>
+              Add Another Image
+            </Button>
+          </CardContent>
+        </Card>
+
         <Card>
           <CardHeader>
             <CardTitle>Variants</CardTitle>
@@ -256,5 +292,3 @@ const AddProductForm = () => {
     </form>
   )
 }
-
-export default AddProductForm
