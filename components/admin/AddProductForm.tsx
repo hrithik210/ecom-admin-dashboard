@@ -10,6 +10,24 @@ import { Switch } from '../ui/switch'
 
 const AddProductForm = () => {
   const categories = ["Apparel", "Accessories", "Footwear", "Electronics", "Home", "Beauty"]
+  const availableSizes = ["XS", "S", "M", "L", "XL", "XXL", "One Size", "5", "6", "7", "8", "9", "10", "11", "12"]
+  const availableColors = [
+    "Black",
+    "White",
+    "Gray",
+    "Navy",
+    "Blue",
+    "Red",
+    "Green",
+    "Brown",
+    "Beige",
+    "Pink",
+    "Purple",
+    "Orange",
+    "Yellow",
+    "Gold",
+    "Silver",
+  ]
   const [formData, setFormData] = useState<Partial<Product>>({
     name: "",
     description: "",
