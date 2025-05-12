@@ -30,7 +30,6 @@ const AddProductForm = () => {
     console.log("Number input changed", formData)
   }
 
-  const 
   return (
     <form>
       <div className='grid gap-6 mb-6'>
@@ -115,6 +114,49 @@ const AddProductForm = () => {
             </div>
           </CardContent>
          
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle>Variants</CardTitle>
+            <CardDescription>Select available colors and sizes for this product.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              <div>
+                <h3 className="text-sm font-medium mb-3">Colors</h3>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                  {availableColors.map((color) => (
+                    <div key={color} className="flex items-center space-x-2">
+                      <Checkbox
+                        id={`color-${color}`}
+                        checked={formData.colors?.includes(color) || false}
+                        onCheckedChange={() => handleColorToggle(color)}
+                      />
+                      <Label htmlFor={`color-${color}`}>{color}</Label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <Separator />
+
+              <div>
+                <h3 className="text-sm font-medium mb-3">Sizes</h3>
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                  {availableSizes.map((size) => (
+                    <div key={size} className="flex items-center space-x-2">
+                      <Checkbox
+                        id={`size-${size}`}
+                        checked={formData.sizes?.includes(size) || false}
+                        onCheckedChange={() => handleSizeToggle(size)}
+                      />
+                      <Label htmlFor={`size-${size}`}>{size}</Label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </CardContent>
         </Card>
       </div>
     </form>
