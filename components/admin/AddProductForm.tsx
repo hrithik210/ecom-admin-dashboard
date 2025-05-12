@@ -1,3 +1,4 @@
+"use client"
 import { Product } from '@/lib/types'
 import React, { useState } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card'
@@ -8,6 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '.
 import { Switch } from '../ui/switch'
 
 const AddProductForm = () => {
+  const categories = ["Apparel", "Accessories", "Footwear", "Electronics", "Home", "Beauty"]
   const [formData, setFormData] = useState<Partial<Product>>({
     name: "",
     description: "",
@@ -20,6 +22,15 @@ const AddProductForm = () => {
     reviews: [],
     rating: 0,
   })
+
+  const handleChange = () => {
+    console.log("Form data changed", formData)
+  }
+  const handleNumberChange = () =>{
+    console.log("Number input changed", formData)
+  }
+
+  const 
   return (
     <form>
       <div className='grid gap-6 mb-6'>
