@@ -47,6 +47,24 @@ export function EditProductForm({ product }: EditProductFormProps) {
   ]
   const availableSizes = ["XS", "S", "M", "L", "XL", "XXL", "One Size", "5", "6", "7", "8", "9", "10", "11", "12"]
 
+  const handleImageChange = (index: number, value: string) => {
+    const newImages = [...formData.images]
+    newImages[index] = value
+    setFormData((prev) => ({ ...prev, images: newImages }))
+  }
+
+  const addImageField = () => {
+    setFormData((prev) => ({
+      ...prev,
+      images: [...prev.images, ""],
+    }))
+  }
+
+  const removeImageField = (index: number) => {
+    const newImages = [...formData.images]
+    newImages.splice(index, 1)
+    setFormData((prev) => ({ ...prev, images: newImages }))
+  }
   const handleColorToggle = (color: string) => {
     setFormData((prev) => {
       const currentColors = prev.colors
