@@ -48,6 +48,15 @@ export function EditProductForm({ product }: EditProductFormProps) {
   const availableSizes = ["XS", "S", "M", "L", "XL", "XXL", "One Size", "5", "6", "7", "8", "9", "10", "11", "12"]
 
 
+  const handleSizeToggle = (size: string) => {
+    setFormData((prev) => {
+      const currentSizes = prev.sizes
+      return {
+        ...prev,
+        sizes: currentSizes.includes(size) ? currentSizes.filter((s) => s !== size) : [...currentSizes, size],
+      }
+    })
+  }
   
   const handleDragEnd = (result: any) => {
     if (!result.destination) return
