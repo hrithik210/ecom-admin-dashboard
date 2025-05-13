@@ -47,6 +47,15 @@ export function EditProductForm({ product }: EditProductFormProps) {
   ]
   const availableSizes = ["XS", "S", "M", "L", "XL", "XXL", "One Size", "5", "6", "7", "8", "9", "10", "11", "12"]
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setFormData((prev) => ({ ...prev, [name]: value }))
+  }
+
+  const handleNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target
+    setFormData((prev) => ({ ...prev, [name]: Number.parseFloat(value) }))
+  }
   const handleImageChange = (index: number, value: string) => {
     const newImages = [...formData.images]
     newImages[index] = value
