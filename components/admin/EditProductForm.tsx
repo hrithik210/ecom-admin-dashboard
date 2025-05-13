@@ -95,7 +95,7 @@ export function EditProductForm({ product }: EditProductFormProps) {
   }
   const handleColorToggle = (color: string) => {
     setFormData((prev) => {
-      const currentColors = prev.colors
+      const currentColors = prev.colors || []
       return {
         ...prev,
         colors: currentColors.includes(color) ? currentColors.filter((c) => c !== color) : [...currentColors, color],
@@ -105,7 +105,7 @@ export function EditProductForm({ product }: EditProductFormProps) {
 
   const handleSizeToggle = (size: string) => {
     setFormData((prev) => {
-      const currentSizes = prev.sizes
+      const currentSizes = prev.sizes || []
       return {
         ...prev,
         sizes: currentSizes.includes(size) ? currentSizes.filter((s) => s !== size) : [...currentSizes, size],
@@ -271,7 +271,7 @@ export function EditProductForm({ product }: EditProductFormProps) {
                     <div key={color} className="flex items-center space-x-2">
                       <Checkbox
                         id={`color-${color}`}
-                        checked={formData.colors.includes(color)}
+                        checked={(formData.colors ?? []).includes(color)}
                         onCheckedChange={() => handleColorToggle(color)}
                       />
                       <Label htmlFor={`color-${color}`}>{color}</Label>
@@ -289,7 +289,7 @@ export function EditProductForm({ product }: EditProductFormProps) {
                     <div key={size} className="flex items-center space-x-2">
                       <Checkbox
                         id={`size-${size}`}
-                        checked={formData.sizes.includes(size)}
+                        checked={(formData.sizes ?? []).includes(size)}
                         onCheckedChange={() => handleSizeToggle(size)}
                       />
                       <Label htmlFor={`size-${size}`}>{size}</Label>
