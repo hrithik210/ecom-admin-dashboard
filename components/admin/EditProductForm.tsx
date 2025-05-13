@@ -47,7 +47,17 @@ export function EditProductForm({ product }: EditProductFormProps) {
   ]
   const availableSizes = ["XS", "S", "M", "L", "XL", "XXL", "One Size", "5", "6", "7", "8", "9", "10", "11", "12"]
 
+
   
+  const handleDragEnd = (result: any) => {
+    if (!result.destination) return
+
+    const items = Array.from(formData.images)
+    const [reorderedItem] = items.splice(result.source.index, 1)
+    items.splice(result.destination.index, 0, reorderedItem)
+
+    setFormData((prev) => ({ ...prev, images: items }))
+  }
 
   return (
     <form onSubmit={handleSubmit}>
