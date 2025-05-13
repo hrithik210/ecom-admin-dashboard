@@ -47,6 +47,15 @@ export function EditProductForm({ product }: EditProductFormProps) {
   ]
   const availableSizes = ["XS", "S", "M", "L", "XL", "XXL", "One Size", "5", "6", "7", "8", "9", "10", "11", "12"]
 
+  const handleColorToggle = (color: string) => {
+    setFormData((prev) => {
+      const currentColors = prev.colors
+      return {
+        ...prev,
+        colors: currentColors.includes(color) ? currentColors.filter((c) => c !== color) : [...currentColors, color],
+      }
+    })
+  }
 
   const handleSizeToggle = (size: string) => {
     setFormData((prev) => {
@@ -57,7 +66,7 @@ export function EditProductForm({ product }: EditProductFormProps) {
       }
     })
   }
-  
+
   const handleDragEnd = (result: any) => {
     if (!result.destination) return
 
