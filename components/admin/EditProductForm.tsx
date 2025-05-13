@@ -47,6 +47,25 @@ export function EditProductForm({ product }: EditProductFormProps) {
   ]
   const availableSizes = ["XS", "S", "M", "L", "XL", "XXL", "One Size", "5", "6", "7", "8", "9", "10", "11", "12"]
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    try {
+      // Here you would normally send the data to your API
+      console.log("Updating product:", formData)
+
+      // Simulate API call
+      await new Promise((resolve) => setTimeout(resolve, 1000))
+
+      // Redirect to admin products page
+      router.push("/admin")
+    } catch (error) {
+      console.error("Error updating product:", error)
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
