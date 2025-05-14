@@ -21,11 +21,6 @@ export default function ProductGrid({ products }: ProductGridProps) {
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
                 priority
               />
-              {product.discount && (
-                <span className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
-                  Sale
-                </span>
-              )}
             </div>
             <CardContent className="pt-4 pb-2 px-4">
               <h3 className="font-medium text-gray-800 line-clamp-1">{product.name}</h3>
@@ -34,8 +29,8 @@ export default function ProductGrid({ products }: ProductGridProps) {
             <CardFooter className="pb-4 px-4 flex justify-between items-center">
               <div className="flex items-center gap-2">
                 <p className="font-semibold text-gray-900">₹{product.price}</p>
-                {product.originalPrice && (
-                  <p className="text-sm text-gray-500 line-through">₹{product.originalPrice}</p>
+                {product.price && (
+                  <p className="text-sm text-gray-500 line-through">₹{product.price}</p>
                 )}
               </div>
               <div className="text-sm text-gray-500 flex items-center">
