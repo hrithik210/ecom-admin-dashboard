@@ -1,6 +1,5 @@
 import { EditProductForm } from "@/components/admin/EditProductForm"
 import { getProductById } from "@/lib/Products"
-import { get } from "http"
 
 interface EditProductPageProps {
   params: {
@@ -9,8 +8,6 @@ interface EditProductPageProps {
 }
 
 export default function EditProductPage({ params }: EditProductPageProps) {
-  // In a real app, you would fetch the product data from your API
-  // For this example, we'll use mock data
   const product = getProductById(params.id)
 
   if (!product) {
