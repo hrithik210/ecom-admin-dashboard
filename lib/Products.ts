@@ -113,15 +113,15 @@ export function getProductById(id: string): Product | undefined {
   return products.find((product) => product.id === id)
 }
 
+export function getAllProducts(){
+  return products
+}
+
 // Get related products (same category, excluding the current product)
 export function getRelatedProducts(currentId: string, category: string, limit = 4): Product[] {
   return products.filter((product) => product.id !== currentId && product.category === category).slice(0, limit)
 }
 
-// Get all products
-export function getAllProducts(): Product[] {
-  return products
-}
 
 // Get featured products
 export function getFeaturedProducts(limit = 4): Product[] {
