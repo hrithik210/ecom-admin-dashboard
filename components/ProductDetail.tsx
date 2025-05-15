@@ -7,8 +7,8 @@ import { Button } from "./ui/button";
 import { ChevronLeft, ChevronRight, Heart, Share2, Star, Truck } from "lucide-react";
 import { Separator } from "./ui/separator";
 import { Label } from "./ui/label";
-import { RadioGroup } from "./ui/radio-group";
-import { RadioGroupItem } from "@radix-ui/react-radio-group";
+import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
+
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 import { Badge } from "./ui/badge";
@@ -45,15 +45,19 @@ export default function ProductDetail({ product }: ProductDetailProps) {
     }
   }, [isAnimating , product.images.length]);
 
-  const goToSlide = (index) => {
-    if (! isAnimating && currentIndex != index){
+  interface SlideHandler {
+    (index: number): void;
+  }
+
+  const goToSlide: SlideHandler = (index) => {
+    if (!isAnimating && currentIndex !== index) {
       setIsAnimating(true);
       setCurrentIndex(index);
       setTimeout(() => {
         setIsAnimating(false);
       }, 300);
     }
-  }
+  };
 
   const handleAddToCart = () => {
     alert(`Added ${quantity} of ${product.name} to cart`);
