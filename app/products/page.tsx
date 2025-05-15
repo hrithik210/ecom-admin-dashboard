@@ -1,18 +1,18 @@
 import ProductGrid from '@/components/ProductGrid';
-import { getProductById } from '@/lib/Products';
+import { getAllProducts, getProductById } from '@/lib/Products';
 import React from 'react'
 
 const AllProductsRender = () => {
 
-const product =  getProductById("1")
+const products =  getAllProducts()
   
-if(!product){
-    return <div>Product not found</div>
+if(!products){
+    return <div>no products to show at the moment</div>
 }
 
   return (
     <div>
-        <ProductGrid products={[product]} />
+        <ProductGrid products={products} />
     </div>
   )
 }

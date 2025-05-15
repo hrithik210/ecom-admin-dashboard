@@ -113,7 +113,7 @@ export function getProductById(id: string): Product | undefined {
   return products.find((product) => product.id === id)
 }
 
-export function getAllProducts(){
+export function getAllProducts(): Product[] {
   return products
 }
 
